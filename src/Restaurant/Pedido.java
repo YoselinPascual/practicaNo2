@@ -3,42 +3,61 @@ package Restaurant;
 import java.time.LocalDate;
 
 public class Pedido {
-    private float cantidadPedida;
+    private int cantidadPedida;
     private LocalDate fechaPedido;
-    private float cantidadLlegada;
+    private int cantidadLlegada;
     private LocalDate fechaLlegada;
+
+    private Mercancia mercancia;
     private Proveedor proveedor;
-    public Pedido(Proveedor proveedor, float cantidadPedida, LocalDate fechaPedido) {
-        this.proveedor = proveedor;
+
+    public Pedido(int cantidadPedida, LocalDate fechaPedido, Mercancia mercancia, Proveedor proveedor) {
         this.cantidadPedida = cantidadPedida;
         this.fechaPedido = fechaPedido;
-        this.cantidadLlegada = 0;
-        this.fechaLlegada = null;
+        this.mercancia = mercancia;
+        this.proveedor = proveedor;
     }
-    public void registraLlegada(float cantidadLlegada, LocalDate fechaLlegada) {
-        this.cantidadLlegada = cantidadLlegada;
-        this.fechaLlegada = fechaLlegada;
+
+    public int getCantidadPedida() {
+        return cantidadPedida;
     }
-    public float getCantidadLlegada() {
-        return cantidadLlegada;
-    }
+
     public LocalDate getFechaPedido() {
         return fechaPedido;
     }
-    public Proveedor getProveedor() {
-        return proveedor;
+
+    public int getCantidadLlegada() {
+        return cantidadLlegada;
     }
+
     public LocalDate getFechaLlegada() {
         return fechaLlegada;
     }
+
+    public Mercancia getMercancia() {
+        return mercancia;
+    }
+
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void registrarLlegada(int cantidadLlegada, LocalDate fechaLlegada) {
+        this.cantidadLlegada = cantidadLlegada;
+        this.fechaLlegada = fechaLlegada;
+
+        mercancia.actualizarExistencia(cantidadLlegada);
+    }
+
     @Override
     public String toString() {
         return "Pedido{" +
-                "\nProveedor: " + proveedor +
-                "\nCantidad Pedida: " + cantidadPedida +
-                "\nFecha Pedido: " + fechaPedido +
-                "\nCantidad Llegada: " + (cantidadLlegada > 0 ? cantidadLlegada : "Vacio") +
-                "\nFecha Llegada: " + (fechaLlegada != null ? fechaLlegada : "Sin fecha de llegada") +
-                "\n}";
+                "cantidadPedida=" + cantidadPedida +
+                ", fechaPedido=" + fechaPedido +
+                ", cantidadLlegada=" + cantidadLlegada +
+                ", fechaLlegada=" + fechaLlegada +
+                ", mercancia=" + mercancia +
+                ", proveedor=" + proveedor +
+                '}';
     }
 }

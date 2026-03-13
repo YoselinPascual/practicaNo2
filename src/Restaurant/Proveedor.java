@@ -9,16 +9,33 @@ public class Proveedor {
         this.telefono = telefono;
         this.direccion = direccion;
     }
-    public String obtenerNombre() {
+
+    public String getNombre() {
         return nombre;
     }
-    public String obtenerTelefono() {
+
+    public String getTelefono() {
         return telefono;
     }
-    public String obtenerDireccion() {
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
         return direccion;
     }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    @Override
     public String toString() {
-        return "Proveedor: " + nombre +  ", Telefono: " + telefono + ", Direccion: " + direccion;
+        return "Proveedor{" +
+                "nombre='" + nombre + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", direccion='" + direccion + '\'' +
+                '}';
     }
 }
