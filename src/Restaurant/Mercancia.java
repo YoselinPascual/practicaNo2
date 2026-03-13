@@ -1,7 +1,6 @@
 package Restaurant;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Mercancia {
     private String nombre;
